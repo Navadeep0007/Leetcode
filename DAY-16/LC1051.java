@@ -13,3 +13,30 @@ class Solution {
     }
 }
 //1051. Height Checker
+
+// otpimal
+class Solution {
+    public int heightChecker(int[] heights) {
+        int[] freq = new int[101];
+        int count = 0;
+        int k = 1;
+
+        for (int x : heights) {
+            freq[x]++;
+        }
+
+        for (int i = 0; i < heights.length; i++) {
+            while (freq[k] == 0) {
+                k++;
+            }
+
+            if (heights[i] != k) {
+                count++;
+            }
+
+            freq[k]--;
+        }
+
+        return count;
+    }
+}
